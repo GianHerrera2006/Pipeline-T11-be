@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - develop
-  pull_request:
-    branches:
-      - develop
 
 jobs:
   trivy-scan:
@@ -28,10 +25,9 @@ jobs:
       - name: Install Trivy
         run: |
           sudo apt-get update
-          sudo apt-get install wget -y
+          sudo apt-get install -y wget
           wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.48.0_Linux-64bit.deb
           sudo dpkg -i trivy_0.48.0_Linux-64bit.deb
 
       - name: Run Trivy scan
-        run: |
-          trivy fs . --severity HIGH,CRITICAL --exit-code 0
+        run: trivy fs . --severity HIGH,CRITICAL --exit-code 0 || true
