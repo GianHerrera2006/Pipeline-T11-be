@@ -1,0 +1,17 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql-server-gian
+    environment:
+      SA_PASSWORD: "Sql2026!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1434:1433"
+    networks:
+      - agrimarket-network
+
+networks:
+  agrimarket-network:
+    name: agrimarket-network
+    driver: bridge

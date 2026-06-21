@@ -1,0 +1,18 @@
+services:
+  springboot-app:
+    image: gianherrerasaavedra/springboot-backend:1.0
+    container_name: backend-api-gian
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      DATABASE_URL: "jdbc:sqlserver://sqlserver:1433;databaseName=Agrimarket;encrypt=false;trustServerCertificate=true"
+      DATABASE_USERNAME: "sa"
+      DATABASE_PASSWORD: "Sql2026!"
+      DATABASE_DRIVER: "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    networks:
+      - agrimarket-network
+
+networks:
+  agrimarket-network:
+    external: true

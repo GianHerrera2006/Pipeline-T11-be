@@ -1,0 +1,58 @@
+===================================================================
+1. POSTMAN JSON: NUEVO PRODUCTO
+===================================================================
+
+{
+    "productCode": "TEST-001",
+    "name": "Nuevo Producto Test",
+    "price": 99.99,
+    "activeIngredient": "Ingrediente Activo Test",
+    "presentation": "1 Litro",
+    "imageUrl": "https://foodandpleasure.com/wp-content/uploads/2024/04/plantas-interior-sansevieria-foto-shutterstock.jpg",
+    "description": "Producto de prueba para testing",
+    "sku": "TEST-001",
+    "categoryId": 4,
+    "brandId": 1,
+    "isActive": true
+}
+
+
+===================================================================
+2. POSTMAN JSON: NUEVO CLIENTE (CUSTOMER)
+===================================================================
+
+{
+    "customerCode": "CLT-016", 
+    "docType": "DNI",
+    "docNumber": "99998888", 
+    "firstName": "Brando Test",
+    "lastName": "Flores",
+    "email": "brando.test99@gmail.com",
+    "phone": "987123456",
+    "address": "Av. Benavides 456 - Imperial",
+    "ubigeoId": 5,
+    "password": "miClaveSegura123",
+    "notes": "Cliente de prueba para testing nuevo",
+    "isActive": true
+}
+
+
+===================================================================
+3. POSTMAN JSON: NUEVA ORDEN (ORDER - TRANSACCIONAL)
+===================================================================
+
+{
+    "customerId": 1,
+    "storeId": 1,
+    "deliveryType": "delivery",
+    "deliveryAddress": "Fundo San Juan Parcela B",
+    "status": "pendiente",
+    "totalAmount": 99.99,
+    "details": [
+        {
+            "productId": 1,
+            "quantity": 1,
+            "unitPrice": 99.99
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+#       cd docker-compose-jemith28
+#       docker compose -f docker-compose-db.yml up -d
+#       docker compose -f docker-compose-db.yml down
+
+#    apagar el contenedor de la base de datos y destruir el almacenamiento antiguo viciado
+#    docker compose -f docker-compose-jemith28/docker-compose-db.yml down -v
+
+
+services:
+  sqlserver:
+    image: jemith28/sqlserver:2022
+    container_name: sql-server
+    environment:
+      SA_PASSWORD: "Sql2026!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    name: my-network
+    driver: bridge

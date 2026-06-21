@@ -1,0 +1,64 @@
+# ASE251S3_T11-be - Backend AgroConecta
+
+## Descripción del Proyecto
+
+Este es el backend desarrollado en **Spring Boot** para la plataforma **AgroConecta**, una startup que conecta directamente a pequeños agricultores con consumidores finales en la ciudad.
+
+El proyecto implementa una arquitectura por capas y utiliza **SQL Server** ejecutándose en un contenedor **Docker**.
+
+### Integrantes
+- **Integrante 1**: Brando F.Lucana - Maestro **Client** (Cliente)
+- **Integrante 2**:GianCarlos Herrera - Maestro **Supplier** (Proveedor)
+
+## Tecnologías Utilizadas
+
+- **Backend**: Spring Boot 3.4
+- **Base de Datos**: SQL Server 2022 (en Docker)
+- **ORM**: Hibernate / JPA
+- **Gestión de dependencias**: Maven
+- **Eliminación lógica**: Campo `status` tipo BIT
+
+## Maestros Implementados (CRUD)
+
+### 1. Client (Cliente) - Desarrollado por [Tu Nombre]
+
+- **Campos**: 8 campos
+- **Endpoints**:
+  - `GET /api/clients` → Listar todos
+  - `GET /api/clients/activos` → Listar por estado (activos)
+  - `GET /api/clients/{id}` → Buscar por ID
+  - `POST /api/clients` → Crear
+  - `PUT /api/clients/{id}` → Actualizar
+  - `PATCH /api/clients/{id}/eliminar` → Eliminar lógico
+  - `PATCH /api/clients/{id}/restaurar` → Restaurar lógico
+
+### 2. Supplier (Proveedor) - Desarrollado por [Nombre de tu compañero]
+
+- **Campos**: 9 campos
+- **Endpoints**:
+  - `GET /api/suppliers` → Listar todos
+  - `GET /api/suppliers/activos` → Listar por estado
+  - `GET /api/suppliers/{id}` → Buscar por ID
+  - `POST /api/suppliers` → Crear
+  - `PUT /api/suppliers/{id}` → Actualizar
+  - `PATCH /api/suppliers/{id}/eliminar` → Eliminar lógico
+  - `PATCH /api/suppliers/{id}/restaurar` → Restaurar lógico
+
+## Requisitos Cumplidos
+
+- [x] Arquitectura por capas (Model - Repository - Service - Controller)
+- [x] CRUD completo por cada maestro
+- [x] Listar, Listar por ID y Listar por Estado
+- [x] Crear, Editar, Eliminar lógico y Restaurar lógico
+- [x] Mínimo 6 campos y 4 tipos de datos diferentes por maestro
+- [x] Conexión a SQL Server mediante contenedor Docker
+
+## Configuración del Proyecto
+
+### 1. Base de Datos (Docker)
+```bash
+docker run -d --name sqlserver-agroconecta \
+  -e "ACCEPT_EULA=Y" \
+  -e "MSSQL_SA_PASSWORD=Sql2026!" \
+  -p 1433:1433 \
+  mcr.microsoft.com/mssql/server:2022-latest

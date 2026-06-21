@@ -1,0 +1,29 @@
+# cd docker-compose-jemith28
+#  docker compose -f docker-compose-be.yml up -d
+#  docker compose -f docker-compose-be.yml down
+#-------------------------------------------------------
+#-recompila la imagen del backend usando el código actualizado
+# Y levanta el contenedor backend-api-jemith28 con esa nueva imagen
+#  docker compose -f docker-compose-be.yml up -d --build
+#---------------------------------------------------------------
+services:
+  springboot-app:
+    build:
+      context: ..
+      dockerfile: dockerfile-jemith28/Dockerfile
+    container_name: backend-api-jemith28
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      PORT: "8080"
+      DATABASE_URL: "jdbc:sqlserver://sqlserver;databaseName=Agrimarket;encrypt=false;trustServerCertificate=true"
+      DATABASE_USERNAME: "sa"
+      DATABASE_PASSWORD: "Sql2026!"
+      DATABASE_DRIVER: "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    external: true
